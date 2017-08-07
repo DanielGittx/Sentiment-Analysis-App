@@ -19,7 +19,7 @@ ax1 = fig.add_subplot(1,1,1,)
 
 
 def animate(i):
-    pull_data = open("twitter_out.txt", "r").read()
+    pull_data = open("twitter_results_to_plot.txt", "r").read()   # This file contains positive and negative
     lines = pull_data.split('\n')
     xar = []
     yar = []
@@ -27,22 +27,22 @@ def animate(i):
     x = 0
     y = 0
 
-    for l in lines:
+    for l in lines: # Logic behind plotting the graph
         x += 1
-        if "pos" in l:
+        if "pos" in l:   #Any positive review, increment by one on y-axis
             y += 1
         elif "neg" in l:
-            y -= 1
+            y -= 1       #Any nnegative review, derement by one on y-axis
 
-        xar.append(x)
+        xar.append(x)   # Fill the above in the xar/yar arrays for plotting
         yar.append(y)
 
     ax1.clear()
     ax1.plot(xar,yar)
-ani = animation.FuncAnimation(fig,animate,interval=1000)
+ani = animation.FuncAnimation(fig,animate,interval=1000)  #Refresh this update periodically every second
 fig = plt.figure()
 #figure.savefig('C:/Users/danial/PycharmProjects/SentAnalysis/static/img/sine_wave_plot.svg')
-plt.show()
+plt.show()    #Render using ggplot
 
 
 
