@@ -20,7 +20,7 @@ style.use("ggplot")
 fig = plt.figure()
 ax1 = fig.add_subplot(1,1,1,)
 
-s = sched.scheduler(time.time, time.sleep)
+s = sched.scheduler(time.time, time.sleep) #Init scheduler
 def animate():
     #threading.Timer(5.0, animate).start()
     pull_data = open("twitter_out.txt", "r").read()
