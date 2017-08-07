@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<div lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Oritics</title>
+    <!--REQUIRED STYLE SHEETS-->
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLE CSS -->
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="../static/css/style.css" rel="stylesheet" />
+        <!-- GOOGLE FONT -->
+    <!--
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <!--
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <!-- Navigation -->
+     <header>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://www.oritics.com"><b>ORITICS</b></a>
+            </div>
+            <!-- Collect the nav links for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home">HOME</a>
+                    </li>
+                    <li><a href="#services">SERVICES</a>
+                    </li>
+                    <!--
+                    <li><a href="#price-sec">PRICING</a>
+                    </li>
+                     -->
+                    <li><a href="#contact-sec">CONTACT</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+          </header>
+    <!--End Navigation -->
+
+
+
+    <!--Header section  -->
+    <div id="home">
+
+
+    <!--Logo section  -->
+    <div id="logo">
+
+  <body>
+	<div id="logoholder" style="height: 50px; width: 100%;">
+	</div>
+  <p>{{logo}}, {{xar}}, {{yar}}</p>
+
+ </body>
+    </div>
+
+
+
+        	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Oritics</title>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+    Highcharts.chart('container', {
+
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+
+                        // set up the updating of the chart each second
+                        var series = this.series[0];
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+                                y = Math.random();
+                            series.addPoint([x, y], true, true);
+                        }, 1000);
+                    }
+                }
+            },
+        title: {
+            text: 'Sentiment Visualization'
+        },
+        subtitle: {
+            text: 'Real-time stream'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                month: '%e. %b',
+                year: '%b'
+            },
+            title: {
+                text: 'Date'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Sentiment Volume (m)'
+            },
+            min: 0
+        },
+        tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
+        },
+
+        plotOptions: {
+            spline: {
+                marker: {
+                    enabled: true
+                }
+            }
+        },
+series: [{
+                name: 'Sentiment Trend',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random()
+                        });
+                    }
+                    return data;
+                }())
+            }]
+
+    });
+});
+		</script>
+	</head>
+	<body>
+<script src="../static/plugins/highcharts.js"></script>
+<script src="../static/plugins/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+
+    <div class="container" >
+          <!--
+        <div class="row ">
+            <div class="col-md-9 col-sm-9">
+                <h1 class="head-main"> Oritics</h1>
+                <span class="head-sub-main"><i>Machine Learning for people</i></span>
+                <div class="head-last">
+
+
+                </div>
+
+            </div>
+           -->
+            <!--
+               <div class="col-md-3 col-sm-3">
+                   <div class="div-trans text-center">
+                       <h3>Request a Quote </h3>
+                        <form>
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required" placeholder="Name">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" required="required" placeholder="Email address">
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <textarea name="message" id="Textarea1" required="required" class="form-control" rows="3" placeholder="Message"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Submit Here </button>
+                                </div>
+                            </div>
+
+                    </form>
+                   </div>
+
+            </div>
+-->
+        </div>
+    </div>
+          </div>
+    <!--End Header section  -->
+    <!--Services Section-->
+    <section  id="services">
+        <div class="container">
+
+            <div class="row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2>Our Services</h2>
+
+                </div>
+
+            </div>
+
+            <div class="row text-center space-pad">
+                <div class="col-md-6 col-sm-4">
+
+                    <div >
+
+                        <i class="fa fa-briefcase fa-4x main-color"></i>
+
+
+                        <h3> Sentiment Analysis </h3>
+                        <p>
+                            <i> <b>Want to know what people are saying about your brand online?</b> </br>
+                                1. Catch it as it unfolds across the web from social networks to trusted publications and blogs.</br>
+                                2. React and engage quickly to realtime comments made about your brand. </br>
+                                3. Follow up on positive comments from your brand ambassadors or respond to disatisfied customer before the story gets ahead of you! </br>
+                                <strong>get started here!</strong> </i>
+                        </p>
+                    </div>
+
+
+                </div>
+                <div class="col-md-6 col-sm-4">
+
+                    <div >
+
+                        <i class="fa fa-briefcase fa-4x main-color"></i>
+
+
+                        <h3> Predictive Modeling </h3>
+                        <p>
+                            <i> Want to know what people are saying about your brand online? </br> Catch it as it unfolds across the web from social networks to trusted publications and blogs.
+                                React and engage quickly to real-time comments made about your brand. </br>Follow up on positive comments from your brand ambassadors or respond to disatisfied customer before the story gets ahead of you! </br> <strong>get started here!</strong> </i>
+                        </p>
+
+                    </div>
+
+                </div>
+                                <div class="col-md-8 col-md-offset-2">
+
+                    <div >
+
+                        <i class="fa fa-briefcase fa-4x main-color"></i>
+
+
+                        <h3> Sentiment Analysis </h3>
+                        <p>
+                            <i> <b>Want to know what people are saying about your brand online?</b> </br>
+                                1. Catch it as it unfolds across the web from social networks to trusted publications and blogs.</br>
+                                2. React and engage quickly to realtime comments made about your brand. </br>
+                                3. Follow up on positive comments from your brand ambassadors or respond to disatisfied customer before the story gets ahead of you! </br>
+                                <strong>get started here!</strong> </i>
+                        </p>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+                  </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section  id="contact-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                   <div id="social-icon">
+                          <strong> Enquiry:</strong> info@oritics.com
+                          <strong> Cell:</strong> +254 (0) 721 512 564
+
+
+                        <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                        <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                        <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
+                        <a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+                        <a href="#"><i class="fa fa-pinterest fa-2x"></i></a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!--End Contact Section -->
+    <!--footer Section -->
+    <div class="for-full-back " id="footer">
+       Copyright &copy; Oritics| 2017 www.oritics.com | All Right Reserved
+
+    </div>
+    <!--End footer Section -->
+    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY  -->
+       <!-- import plugin script -->
+        <script src='../static/plugins/highcharts.js'></script>
+
+    <script src='static/plugins/Chart.min.js'></script>
+    <script src="../static/plugins/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP CORE SCRIPT   -->
+    <script src="../static/plugins/bootstrap.js"></script>
+    <!-- PARALLAX SCRIPT   -->
+    <script src="../static/plugins/4jquery.parallax-1.1.3.js"></script>
+    <!-- CUSTOM SCRIPT   -->
+    <script src="../static/js/custom.js"></script>
+
+
+</body>
+</html>

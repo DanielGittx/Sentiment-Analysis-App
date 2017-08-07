@@ -1,0 +1,252 @@
+﻿/*=============================================================
+    Authour URI: www.binarytheme.com
+    License: Commons Attribution 3.0
+
+    http://creativecommons.org/licenses/by/3.0/
+
+    100% To use For Personal And Commercial Use.
+    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
+
+    ========================================================  */
+
+
+
+/*=======================================
+    GENERAL STYLES
+==================================================*/
+body {
+          font-family: 'Open Sans', sans-serif;
+    font-size:14px;
+}
+
+.text-center {
+    text-align:center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    margin-bottom:2px;
+    text-transform:lowercase;
+
+}
+h2 {
+    color:#008080;
+}
+    h2:after {
+      display: block;
+content: "";
+height: 2px;
+width: 150px;
+background: #008080;
+margin: 10px auto 40px;
+
+    }
+
+
+h3 {
+    line-height:30px;
+    padding-bottom:20px;
+}
+h4 {
+    line-height:40px;
+}
+
+p {
+    font-weight:300;
+    line-height:30px;
+    padding-bottom:20px;
+}
+
+.space-pad {
+    padding-bottom:50px;
+    padding-top:50px;
+}
+
+
+section {
+    padding-top:50px;
+    padding-bottom:40px;
+}
+
+/*=======================================
+    COLOR CODES
+==================================================*/
+.main-color {
+    color: #00b3b3;
+}
+
+/*=======================================
+    NAVIGATION STYLES
+==================================================*/
+.navbar a {
+    color:#ffffff !important;
+}
+.navbar-header a {
+    color:#ffffff !important;
+    padding-right:100px;
+}
+
+nav {
+	position: absolute;
+	width: 100%;
+    background: #fff;
+    z-index:99;
+}
+.fixed {
+	position: fixed;
+	top: 0;
+	min-height: 50px;
+	z-index: 99;
+}
+
+.navbar-inverse {
+background-color: #00b3b3;
+border-color: #05A250;
+}
+
+
+/*=======================================
+    HEADER STYLES
+==================================================*/
+
+.head-main {
+   font-size: 70px !important;
+font-weight: 900!important;
+ color:#fff;
+}
+.head-sub-main {
+    font-size:40px !important;
+    font-weight:600!important;
+    padding:5px 20px 30px 20px;
+    color: #00b3b3;
+}
+.head-last {
+
+    padding:5px 20px 200px 20px;
+    color:#fff;
+}
+#home {
+
+}
+.div-trans {
+    padding:5px;
+    background-color: rgba(0, 255, 41, 0.25);
+min-height: 750px;
+margin-top: 200px;
+color: #fff;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+margin-bottom:30px;
+}
+    .div-trans .form-control {
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+/*=======================================
+    Services  STYLES
+==================================================*/
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+color: #fff;
+background-color: #00b3b3;
+}
+
+#Parallax-one {
+    background-image: url("../img/1.jpg");
+padding: 30px;
+background-repeat: no-repeat;
+background-position: center 0;
+background-size: cover;
+background-attachment: fixed;
+min-height:250px;
+color:#fff;
+}
+ #Parallax-one i {
+        color:#fff;
+    }
+/*=======================================
+    PRICING STYLES
+==================================================*/
+
+
+.plan {
+    background: #eef1f3;
+    padding: 0 0 15px 0;
+    margin: 30px 0px;
+    list-style: none;
+    text-align: center;
+
+}
+
+.plan-active {
+          -webkit-transform: scale(1.1);
+       -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+         -o-transform: scale(1.1);
+            transform: scale(1.1);
+}
+.head-active {
+    background-color: #658AEB!important;
+}
+.plan li {
+    padding: 15px 0px;
+    color: #434749;
+    border-top: 1px dashed #000;
+}
+
+.plan li.plan-head {
+   padding: 15px 0px;
+background-color: #6F6F6F;
+color: #FFFFFF;
+line-height: 20px;
+font-size: 20px;
+font-weight: 600;
+border: none;
+   }
+
+.plan li.main-price {
+   padding: 25px 0px;
+border: none;
+font-size: 30px;
+}
+#Parallax-two {
+    background-image: url("../img/2.jpg");
+padding:30px;
+background-repeat: no-repeat;
+background-position: center 0;
+background-size: cover;
+background-attachment: fixed;
+min-height:300px;
+color:#fff;
+}
+    #Parallax-two i {
+        color:#fff;
+    }
+
+/*=======================================
+    CONTACT STYLES
+==================================================*/
+
+#social-icon a {
+    color:#616161!important;
+    margin-right:10px;
+     font-size:20px;
+     float:right;
+}
+
+/*=======================================
+    FOOTER STYLES
+==================================================*/
+
+
+#footer {
+    background-color:#00b3b3;
+    color:#fff;
+    padding:20px 50px 20px 50px;
+    text-align:right;
+}
+
