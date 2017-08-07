@@ -38,10 +38,10 @@ def animate():
         elif "neg" in l:
             y -= 1
 
-        #xar.append(x)
-        #yar.append(y)
-        xar = random.randrange(100, 105)
-        yar = random.randrange(1, 99)
+        xar.append(x)
+        yar.append(y)
+        #xar = random.randrange(100, 105)
+        #yar = random.randrange(1, 99)
         s.enter(1, 1, animate, ())
     return xar, yar
 #    ax1.clear()
@@ -50,7 +50,6 @@ def animate():
 fig = plt.figure()
 ani = animation.FuncAnimation(fig,animate,interval=2000)
 s.enter(1, 1, animate, ())
-#figure.savefig('C:/Users/danial/PycharmProjects/SentAnalysis/static/img/sine_wave_plot.svg')
 #plt.show()
 
 

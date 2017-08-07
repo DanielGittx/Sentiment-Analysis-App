@@ -27,7 +27,7 @@ def animate(i):
     x = 0
     y = 0
 
-    for l in lines: # Logic behind plotting the graph
+    for l in lines[500:]: # Logic behind plotting the graph. Plot only the first 500 pooints to conserve dat bundle :)
         x += 1
         if "pos" in l:   #Any positive review, increment by one on y-axis
             y += 1
@@ -41,7 +41,7 @@ def animate(i):
     ax1.plot(xar,yar)
 ani = animation.FuncAnimation(fig,animate,interval=1000)  #Refresh this update periodically every second
 fig = plt.figure()
-#figure.savefig('C:/Users/danial/PycharmProjects/SentAnalysis/static/img/sine_wave_plot.svg')
+#figure.savefig('C:/Users/danial/PycharmProjects/safaricom_social_tracker_application/static/img/sine_wave_plot.svg')
 plt.show()    #Render using ggplot
 
 
