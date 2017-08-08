@@ -6,6 +6,7 @@ from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
 from sklearn.linear_model import LogisticRegression, SGDClassifier
 from sklearn.svm import SVC, NuSVC, LinearSVC
 import pickle
+import urllib, urllib2
 import csv
 import codecs
 
@@ -17,29 +18,32 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
+# This class inherits from  classifierI;
+# The class also checks the voting of each classifier
+
 class VoteClassifier(ClassifierI):
     def __init__(self, *classifiers):
         self._classifiers = classifiers
 
-    def classify(self, features):
+    def classify(self, features):          #Clasificatoin based on features; pass features
         votes = []
         for c in self._classifiers:
             v = c.classify(features)
             votes.append(v)
         return mode(votes)
 
-    def confidence(self, features):
+    def confidence(self, features):      #determine confidence level
         votes = []
         for c in self._classifiers:
             v = c.classify(features)
             votes.append(v)
 
-        choice_votes = votes.count(mode(votes))
-        conf = choice_votes / len(votes)
+        choice_votes = votes.count(mode(votes))    #count most popular votes
+        conf = choice_votes / len(votes)           #confidence level
         return conf
 
 
-short_pos = open("short_reviews/positive.txt", "r").read()   #Load Training text
+short_pos = open("short_reviews/positive.txt", "r").read()   #Load Training text from positive.txt and negative.txts
 short_neg = open("short_reviews/negative.txt", "r").read()
 
 
@@ -76,7 +80,7 @@ open_file.close()
 all_words = nltk.FreqDist(all_words)
 
 
-word_features = list(all_words.keys())[:5000] #we want to use the most common 5000 words only
+word_features = list(all_words.keys())[:5000] #we want to use the most common 5000 words
 
 
 open_file = open("pickle_Algorithms/word_features.pickle", "rb")
@@ -85,6 +89,7 @@ open_file.close()
 
 
 def find_features(document):
+
     words = word_tokenize(document)
     features = {}
     for w in word_features:
@@ -100,12 +105,12 @@ print(len(featuresets))
 
 #Positive/Negative Data shuffled
 #training:testing set - 2:3
-training_set = featuresets[:10000] #Everyrthing upto 10000
+training_set = featuresets[:10000] #Everything upto 10000
 testing_set = featuresets[10000:]  #Everuithing beyond 10000
 
-#Negative Data
-#training_set = featuresets[100:]
-#testing_set = featuresets[:100]
+
+#training_set2 = featuresets[100:]
+#testing_set2 = featuresets[:100]
 
 ####################################################################################################################
 classifier = nltk.NaiveBayesClassifier.train(training_set)
@@ -177,8 +182,9 @@ print("LinearSVC_Classifier Accuracy %", (nltk.classify.accuracy(LinearSVC_class
 open_file = open("pickle_Algorithms/LinearSVC_Classifier.pickle", "rb")
 LogisticRegression_classifier = pickle.load(open_file)
 open_file.close()
-##################################################################################################################################
-#Consolidating te votes :)
+#############################################################################################################################
+#################Consolidating te votes :)  #################################################################################
+
 voted_classifier = VoteClassifier(classifier,
                                   #BernoulliNB_classifier,
                                   MNB_classifier,

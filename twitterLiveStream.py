@@ -4,6 +4,8 @@ from tweepy.streaming import StreamListener
 import MySQLdb
 import time
 import json
+import urllib,urllib2
+import sys
 import main as m   # The function sentiment() in main.py returns sentiment_value and confidence
 
 #Database config to save different users inputs/requests
@@ -11,7 +13,7 @@ import main as m   # The function sentiment() in main.py returns sentiment_value
 conn = MySQLdb.connect("localhost", "useraccount", "saf_proj", "twitterfeedDB")
 c = conn.cursor()
 
-
+#Twitter API AUTHENTICATION
 #consumer key, consumer secret, access token, access secret
 #Authentication and authorisation to the public API
 
@@ -20,9 +22,61 @@ csecret = "vkaFXRo0a4lIhxHP3FVpVZfrV0Ljk9UEwp9wBQW5Xzuo6bMgj7"
 atoken = "745559408101433344-Pc8NDKQFyZx6I5CY8SGu3240h4QXbxY"
 asecret = "42mQp7RDMsH4F5Ou4QaBmO8LKGRX5s74FUID1bkAgUCTj"
 
+
+##OPEN CALAIS API
+def Sent_Analysis_from_calais(text):
+
+    ##### set API key and REST URL values.
+
+    x_ag_access_token1 = 'O7tTcXv6TFHA4Z5EKjjxPcrcdWndxl'  # your Calais API key.
+    calaisREST_URL = 'https://api.thomsonreuters.com/permid/Calais'  # REST interface.
+    # info on the newer one: http://www.opencalais.com/documentation/calais-web-service-api/api-invocation/rest
+    # alert user and shut down if the API key variable is still null.
+    if x_ag_access_token1 == '':
+        print "You need to set your Calais API key in the 'x_ag_access_token' variable."
+    sys.exit()
+    ## set the text to ask Calais to analyze.
+    sampleText = text
+
+    ##### set XML parameters for Calais.
+
+    # see "Input Parameters" at: http://www.opencalais.com/documentation/calais-web-service-api/forming-api-calls/input-parameters
+    calaisParams = '''
+    <c:params xmlns:c="http://s.opencalais.com/1/pred/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     <c:processingDirectives c:contentType="text/txt"
+      c:enableMetadataType="GenericRelations,SocialTags"
+      c:outputFormat="Text/Simple"/>
+     <c:userDirectives/>
+     <c:externalMetadata/>
+    </c:params>
+    '''
+
+    ## send data to Calais API.
+
+    # see: http://www.opencalais.com/APICalls
+    dataToSend = urllib.urlencode({
+        'x-ag-access-token': x_ag_access_token1,
+        'content': sampleText,
+        'paramsXML': calaisParams
+    })
+    ##### get API results  .
+    results_calais = urllib2.urlopen(calaisREST_URL, dataToSend).read()
+    return results_calais
+
+
 class listener(StreamListener):
     def on_data(self,data):
         try:
+            ## Public API analysis
+            tweet = data.split(',"text":')[1].split('","source')[0]
+            sentiment_rating = Sent_Analysis_from_calais(tweet)              #Just save this result ina a csv. could also be saved in db
+            save_rating_doc = tweet+'::'+sentiment_rating+'\n'
+            output = open('output.csv','a')
+            output.write(save_rating_doc)
+            #output.close()
+
+
+            ## Local function sentiment analysis
             all_data = json.loads(data)
             tweet = all_data["text"]
             username = all_data["user"]["screen_name"]
@@ -53,6 +107,10 @@ auth.set_access_token(atoken, asecret)
 
 twitterStream = Stream(auth, listener())
 twitterStream.filter(track=["safaricom blaze"])   #"key word" or "search topic"
+
+
+
+
 
 
 
