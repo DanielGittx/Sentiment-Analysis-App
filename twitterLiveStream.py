@@ -69,14 +69,14 @@ class listener(StreamListener):
         try:
             ## Public API analysis
             tweet = data.split(',"text":')[1].split('","source')[0]
-            sentiment_rating = Sent_Analysis_from_calais(tweet)              #Just save this result ina a csv. could also be saved in db
-            save_rating_doc = tweet+'::'+sentiment_rating+'\n'
-            output = open('output.csv','a')
-            output.write(save_rating_doc)
-            #output.close()
+            sentiment_rating = Sent_Analysis_from_calais(tweet)              #Just save this result ina a .txt. could also be saved in db
+            save_rating_doc = tweet + '::' + sentiment_rating + '\n'
+            if sentiment_rating >= 70:
+               output = open('output_Calais.txt','a')
+               output.write(save_rating_doc)
+               output.close()
 
-
-            ## Local function sentiment analysis
+            ##Just save tweets but we need to delete them before 24hrs!
             all_data = json.loads(data)
             tweet = all_data["text"]
             username = all_data["user"]["screen_name"]

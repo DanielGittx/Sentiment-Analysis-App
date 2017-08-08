@@ -19,23 +19,38 @@ ax1 = fig.add_subplot(1,1,1,)
 
 
 def animate(i):
-    pull_data = open("twitter_results_to_plot.txt", "r").read()   # This file contains positive and negative
+    pull_data = open("twitter_results_to_plot.txt", "r").read()   # This file contains positive and negatives
+    pull_data_calais = open("output_Calais.txt", "r").read()      # Calais only outputs the raw texts with a a -ve/+ve value telling if the raw text is negative or positive respectivelt
+    lines_calais = pull_data.split('\n')
     lines = pull_data.split('\n')
     xar = []
     yar = []
 
+    xxar = []
+    yyar = []
+
     x = 0
     y = 0
-
-    for l in lines[500:]: # Logic behind plotting the graph. Plot only the first 500 pooints to conserve dat bundle :)
+    x1 = 0
+    y1 = 0
+    for l in lines[500:]: # Logic behind plotting the graph. Plot only the first 500 pooints to conserve data bundle :)
         x += 1
         if "pos" in l:   #Any positive review, increment by one on y-axis
             y += 1
         elif "neg" in l:
-            y -= 1       #Any nnegative review, derement by one on y-axis
+            y -= 1
+
+    for l in lines_calais[500:]:      #  Plot calais results
+        if "pos" in l:   #Any positive review, increment by one on y-axis
+            y1 += 1
+        elif "neg" in l:
+            y1 -= 1       #Any nnegative review, derement by one on y-axis
 
         xar.append(x)   # Fill the above in the xar/yar arrays for plotting
         yar.append(y)
+
+        xxar.append(x1)   # Fill the above in the xar/yar arrays for plotting
+        yyar.append(y1)
 
     ax1.clear()
     ax1.plot(xar,yar)

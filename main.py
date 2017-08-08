@@ -1,14 +1,11 @@
 import nltk
 import random
-from nltk.corpus import movie_reviews
 from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB, GaussianNB, BernoulliNB
 from sklearn.linear_model import LogisticRegression, SGDClassifier
 from sklearn.svm import SVC, NuSVC, LinearSVC
 import pickle
-import urllib, urllib2
-import csv
-import codecs
+import unittest
 
 from nltk.classify import ClassifierI
 from statistics import mode
@@ -108,10 +105,6 @@ print(len(featuresets))
 training_set = featuresets[:10000] #Everything upto 10000
 testing_set = featuresets[10000:]  #Everuithing beyond 10000
 
-
-#training_set2 = featuresets[100:]
-#testing_set2 = featuresets[:100]
-
 ####################################################################################################################
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 print("Original Naive Bayes_Classifier Accuracy %", (nltk.classify.accuracy(classifier, testing_set))*100)
@@ -195,17 +188,20 @@ voted_classifier = VoteClassifier(classifier,
 
 print("voted_classifier Accuracy %", (nltk.classify.accuracy(voted_classifier, testing_set))*100)      #The result will be returned as a percentage
 
-
-#print ("Classification:", voted_classifier.classify(testing_set[0][0]), "Confidence %", voted_classifier.confidence(testing_set[0][0])*100)
-#print ("Classification:", voted_classifier.classify(testing_set[1][0]), "Confidence %", voted_classifier.confidence(testing_set[1][0])*100)
-#print ("Classification:", voted_classifier.classify(testing_set[2][0]), "Confidence %", voted_classifier.confidence(testing_set[2][0])*100)
-#print ("Classification:", voted_classifier.classify(testing_set[3][0]), "Confidence %", voted_classifier.confidence(testing_set[3][0])*100)
-#print ("Classification:", voted_classifier.classify(testing_set[4][0]), "Confidence %", voted_classifier.confidence(testing_set[4][0])*100)
-#print ("Classification:", voted_classifier.classify(testing_set[5][0]), "Confidence %", voted_classifier.confidence(testing_set[5][0])*100)
-
 def sentiment(text):
     feats = find_features(text)
 
     return voted_classifier.classify(feats), voted_classifier.confidence(feats)
 
+##Unit tests the classifiers; they must always return a numeral if their operation(s) went well:)
+##The function sentiment() should always return the classification and voted confidence level (confidence level of all the classifieers)
+class MyTest(unittest.TestCase):
+    def test(self):
+        self.assertEqual(classifier(),len(classifier))            #must always return a value
+        self.assertEqual(MNB_classifier(), len(MNB_classifier))  # must always return a value
+        self.assertEqual(LogisticRegression_classifier(), len(LogisticRegression_classifier))  # must always return a value
+        self.assertEqual(NuSVC_classifier(), len(NuSVC_classifier))  # must always return a value
+        self.assertEqual(LinearSVC_classifier(), len(LinearSVC_classifier))  # must always return a value
+        self.assertEqual(SGDClassifier_classifier(), len(SGDClassifier_classifier))  # must always return a value
+        self.assertEqual(sentiment(), voted_classifier.classify(),voted_classifier.confidence())
 
