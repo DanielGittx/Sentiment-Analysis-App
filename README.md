@@ -1,4 +1,4 @@
-# Safaricom_social_tracker_application
+#Sentiment Analysis Application
 Socio-Tracker
 
 This is an application that uses machine-learning to monitor people's attitude in social media (twitter) towards a product or topic in debate as positive or negative.
